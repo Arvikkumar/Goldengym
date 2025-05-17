@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
@@ -10,21 +10,21 @@
    <style>
        body {
            font-family: 'Open Sans', sans-serif;
-           background-color: #fdf6e3;
-           color: #5e548e;
+           background-color: #fdf6e3; /* Light beige background */
+           color: #5e548e; /* Dark purple text */
            letter-spacing: 0.025em;
        }
        h1, h2, h3, h4 {
            font-family: 'Merriweather', serif;
-           color: #22223b;
+           color: #22223b; /* Very dark blue, almost black, for headings */
            letter-spacing: 0.05em;
        }
        .gold-text {
-           color: #ffd700;
+           color: #ffd700; /* Gold color for accents */
        }
        .card {
-           background-color: #fff;
-           border: 1px solid #e5e0d8;
+           background-color: #fff; /* White card background */
+           border: 1px solid #e5e0d8; /* Light gray border */
            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
            transition: transform 0.3s ease, box-shadow 0.3s ease;
        }
@@ -33,32 +33,44 @@
            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
        }
        .btn-primary {
-           background-color: #22223b;
-           color: #ffd700;
+           background-color: #22223b; /* Dark blue button */
+           color: #ffd700; /* Gold text on button */
            transition: all 0.3s ease;
        }
        .btn-primary:hover {
-           background-color: #5e548e;
+           background-color: #5e548e; /* Lighter purple on hover */
            transform: translateY(-2px);
        }
        .equipment-filter-btn {
            transition: all 0.3s ease;
        }
        .equipment-filter-btn.active {
-           background-color: #22223b;
-           color: #ffd700;
+           background-color: #22223b; /* Dark blue for active filter */
+           color: #ffd700; /* Gold text for active filter */
        }
        .schedule-day.active {
-           border-bottom: 3px solid #ffd700;
+           border-bottom: 3px solid #ffd700; /* Gold underline for active day */
        }
        .testimonial-card {
-           border-left: 4px solid #ffd700;
+           border-left: 4px solid #ffd700; /* Gold left border for testimonials */
+       }
+       /* Custom scrollbar for better aesthetics (optional) */
+       .scrollbar-hide::-webkit-scrollbar {
+           display: none;
+       }
+       .scrollbar-hide {
+           -ms-overflow-style: none;  /* IE and Edge */
+           scrollbar-width: none;  /* Firefox */
+       }
+       /* Ensure images in cards don't overflow rounded corners */
+       .card img {
+            border-top-left-radius: 0.5rem; /* Corresponds to rounded-lg */
+            border-top-right-radius: 0.5rem;
        }
    </style>
 </head>
 <body>
-   <!-- Navigation -->
-   <nav class="bg-white shadow-sm py-4">
+   <nav class="bg-white shadow-sm py-4 sticky top-0 z-50">
        <div class="container mx-auto px-4 flex justify-between items-center">
            <div class="text-2xl font-bold gold-text">Naubatpur Amarpura Gym</div>
            <div class="hidden md:flex space-x-8">
@@ -69,51 +81,61 @@
                <a href="#schedule" class="hover:text-gray-700 transition">Schedule</a>
                <a href="#contact" class="hover:text-gray-700 transition">Contact</a>
            </div>
-           <button class="md:hidden text-2xl">
+           <button id="mobile-menu-button" class="md:hidden text-2xl text-gray-700">
                <i class="fas fa-bars"></i>
            </button>
        </div>
+       <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+           <a href="#home" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a>
+           <a href="#facilities" class="block py-2 px-4 text-sm hover:bg-gray-100">Facilities</a>
+           <a href="#equipment" class="block py-2 px-4 text-sm hover:bg-gray-100">Equipment</a>
+           <a href="#trainer" class="block py-2 px-4 text-sm hover:bg-gray-100">Trainer</a>
+           <a href="#schedule" class="block py-2 px-4 text-sm hover:bg-gray-100">Schedule</a>
+           <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a>
+       </div>
    </nav>
 
-
-   <!-- Hero Section -->
-   <section id="home" class="py-20 bg-cover bg-center" style="background-image: linear-gradient(rgba(253, 246, 227, 0.9), rgba(253, 246, 227, 0.9)), url('https://images.unsplash.com/photo-1581009137042-c552e485697a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')">
+   <section id="home" class="py-20 bg-cover bg-center" style="background-image: linear-gradient(rgba(253, 246, 227, 0.85), rgba(253, 246, 227, 0.85)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
        <div class="container mx-auto px-4 text-center">
            <h1 class="text-4xl md:text-6xl font-bold mb-6">Naubatpur Amarpura Gym</h1>
            <p class="text-xl md:text-2xl mb-8">Transform Your Body • Strengthen Your Mind</p>
            <p class="text-lg mb-12 max-w-2xl mx-auto">FXG4+H58, Amarpura, Kopa Khurd, Bihar 801109, India</p>
-           <button class="btn-primary px-8 py-3 rounded-full text-lg font-semibold">Join Now</button>
+           <a href="#contact" class="btn-primary px-8 py-3 rounded-full text-lg font-semibold">Join Now</a>
        </div>
    </section>
 
-
-   <!-- Facilities Showcase -->
    <section id="facilities" class="py-16 bg-gray-50">
        <div class="container mx-auto px-4">
            <h2 class="text-3xl font-bold text-center mb-12">Our World-Class Facilities</h2>
           
            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               <!-- Facility 1 -->
                <div class="card rounded-lg overflow-hidden">
-                   <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80" alt="Weight Training Area" class="w-full h-64 object-cover">
+                   <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                        alt="Man performing strength training with dumbbells in a well-equipped gym area" 
+                        class="w-full h-64 object-cover"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/757575?text=Weight+Training+Area';">
                    <div class="p-6">
                        <h3 class="text-xl font-bold mb-3">Weight Training Area</h3>
                        <p>Our spacious weight training section features premium equipment for all your strength training needs.</p>
                    </div>
                </div>
               
-               <!-- Facility 2 -->
                <div class="card rounded-lg overflow-hidden">
-                   <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8it=crop&w=1470&q=80" alt="Cardio Zone" class="w-full h-64 object-cover">
+                   <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                        alt="Bright and modern gym cardio area with treadmills and elliptical machines" 
+                        class="w-full h-64 object-cover"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/757575?text=Cardio+Zone';">
                    <div class="p-6">
                        <h3 class="text-xl font-bold mb-3">Cardio Zone</h3>
                        <p>State-of-the-art cardio machines including treadmills, ellipticals, and stationary bikes for heart-healthy workouts.</p>
                    </div>
                </div>
               
-               <!-- Facility 3 -->
                <div class="card rounded-lg overflow-hidden">
-                   <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Functional Training Space" class="w-full h-64 object-cover">
+                   <img src="https://images.unsplash.com/photo-1517963628607-012fb150016u?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                        alt="Functional fitness area with kettlebells, ropes, and open space for dynamic workouts" 
+                        class="w-full h-64 object-cover"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/757575?text=Functional+Training';">
                    <div class="p-6">
                        <h3 class="text-xl font-bold mb-3">Functional Training Space</h3>
                        <p>Dedicated area for functional training with TRX, battle ropes, kettlebells, and more for dynamic workouts.</p>
@@ -123,14 +145,11 @@
        </div>
    </section>
 
-
-   <!-- Equipment Section -->
    <section id="equipment" class="py-16">
        <div class="container mx-auto px-4">
            <h2 class="text-3xl font-bold text-center mb-6">Our Equipment</h2>
            <p class="text-center mb-12 max-w-2xl mx-auto">Explore our extensive collection of premium fitness equipment to support every aspect of your training.</p>
           
-           <!-- Equipment Filters -->
            <div class="flex flex-wrap justify-center gap-3 mb-12">
                <button class="equipment-filter-btn px-4 py-2 rounded-full border border-gray-300 active" data-filter="all">All Equipment</button>
                <button class="equipment-filter-btn px-4 py-2 rounded-full border border-gray-300" data-filter="strength">Strength</button>
@@ -138,20 +157,19 @@
                <button class="equipment-filter-btn px-4 py-2 rounded-full border border-gray-300" data-filter="functional">Functional</button>
            </div>
           
-           <!-- Equipment Grid -->
            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="equipment-grid">
-               <!-- Equipment items will be inserted here by JavaScript -->
-           </div>
+               </div>
        </div>
    </section>
 
-
-   <!-- Trainer Profile -->
    <section id="trainer" class="py-16 bg-gray-50">
        <div class="container mx-auto px-4">
            <div class="flex flex-col lg:flex-row items-center gap-12">
                <div class="lg:w-1/3">
-                   <img src="https://images.unsplash.com/photo-1571019614242-c9559590d79c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Vikash Kumar" class="w-full h-auto rounded-lg shadow-lg">
+                   <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                        alt="Professional male fitness trainer, Vikash Kumar, in a gym setting" 
+                        class="w-full h-auto rounded-lg shadow-lg object-cover aspect-[3/4]"
+                        onerror="this.onerror=null;this.src='https://placehold.co/736x981/e0e0e0/757575?text=Vikash+Kumar';">
                </div>
                <div class="lg:w-2/3">
                    <h2 class="text-3xl font-bold mb-6">Meet Your Trainer</h2>
@@ -170,19 +188,16 @@
                        </ul>
                    </div>
                   
-                   <button class="btn-primary mt-8 px-6 py-3 rounded-full">Book a Session</button>
+                   <a href="#contact" class="btn-primary mt-8 px-6 py-3 rounded-full inline-block">Book a Session</a>
                </div>
            </div>
        </div>
    </section>
 
-
-   <!-- Class Schedule -->
    <section id="schedule" class="py-16">
        <div class="container mx-auto px-4">
            <h2 class="text-3xl font-bold text-center mb-12">Class Schedule</h2>
           
-           <!-- Day Selector -->
            <div class="flex overflow-x-auto pb-2 mb-8 scrollbar-hide">
                <div class="flex space-x-1">
                    <button class="schedule-day px-6 py-3 font-medium active" data-day="monday">Monday</button>
@@ -195,9 +210,8 @@
                </div>
            </div>
           
-           <!-- Schedule Table -->
            <div class="overflow-x-auto">
-               <table class="w-full border-collapse">
+               <table class="w-full border-collapse min-w-[600px]">
                    <thead>
                        <tr class="bg-gray-100">
                            <th class="p-4 text-left">Time</th>
@@ -207,8 +221,7 @@
                        </tr>
                    </thead>
                    <tbody id="schedule-content">
-                       <!-- Schedule items will be inserted here by JavaScript -->
-                   </tbody>
+                       </tbody>
                </table>
            </div>
           
@@ -218,22 +231,15 @@
        </div>
    </section>
 
-
-   <!-- Testimonials -->
    <section class="py-16 bg-gray-50">
        <div class="container mx-auto px-4">
            <h2 class="text-3xl font-bold text-center mb-12">What Our Members Say</h2>
           
            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-               <!-- Testimonial 1 -->
                <div class="testimonial-card bg-white p-6 rounded-lg">
                    <div class="flex items-center mb-4">
                        <div class="text-2xl gold-text mr-2">
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                        </div>
                        <span class="font-semibold">5.0</span>
                    </div>
@@ -241,15 +247,10 @@
                    <p class="font-semibold">- Ramesh Kumar</p>
                </div>
               
-               <!-- Testimonial 2 -->
                <div class="testimonial-card bg-white p-6 rounded-lg">
                    <div class="flex items-center mb-4">
                        <div class="text-2xl gold-text mr-2">
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star-half-alt"></i>
+                           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                        </div>
                        <span class="font-semibold">4.5</span>
                    </div>
@@ -261,21 +262,15 @@
            <div class="text-center mt-8">
                <div class="inline-flex items-center bg-white px-6 py-3 rounded-full shadow-sm">
                    <div class="text-xl gold-text mr-2">
-                       <i class="fas fa-star"></i>
-                       <i class="fas fa-star"></i>
-                       <i class="fas fa-star"></i>
-                       <i class="fas fa-star"></i>
-                       <i class="fas fa-star-half-alt"></i>
+                       <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                    </div>
                    <span class="font-semibold mr-4">4.6 from 8 reviews</span>
-                   <button class="text-blue-600 font-medium">View More Reviews</button>
+                   <button class="text-blue-600 font-medium hover:underline">View More Reviews</button>
                </div>
            </div>
        </div>
    </section>
 
-
-   <!-- Contact & Booking -->
    <section id="contact" class="py-16">
        <div class="container mx-auto px-4">
            <div class="flex flex-col lg:flex-row gap-12">
@@ -286,7 +281,7 @@
                        <div>
                            <h3 class="text-xl font-semibold mb-2">Address</h3>
                            <p>FXG4+H58, Amarpura, Kopa Khurd, Bihar 801109, India</p>
-                           <a href="https://maps.google.com" class="text-blue-600 mt-2 inline-block">View on Google Maps <i class="fas fa-external-link-alt ml-1"></i></a>
+                           <a href="https://www.google.com/maps/search/?api=1&query=FXG4%2BH58%2C+Amarpura%2C+Kopa+Khurd%2C+Bihar+801109%2C+India" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline mt-2 inline-block">View on Google Maps <i class="fas fa-external-link-alt ml-1"></i></a>
                        </div>
                       
                        <div>
@@ -297,8 +292,8 @@
                       
                        <div>
                            <h3 class="text-xl font-semibold mb-2">Contact Information</h3>
-                           <p class="mb-1"><i class="fas fa-phone gold-text mr-2"></i> +91 98765 43210</p>
-                           <p><i class="fas fa-envelope gold-text mr-2"></i> info@naubatpuramarpuragym.com</p>
+                           <p class="mb-1"><i class="fas fa-phone gold-text mr-2"></i> <a href="tel:+919876543210" class="hover:underline">+91 98765 43210</a></p>
+                           <p><i class="fas fa-envelope gold-text mr-2"></i> <a href="mailto:info@naubatpuramarpuragym.com" class="hover:underline">info@naubatpuramarpuragym.com</a></p>
                        </div>
                    </div>
                </div>
@@ -310,22 +305,22 @@
                        <form id="contact-form" class="space-y-5">
                            <div>
                                <label for="name" class="block mb-1 font-medium">Full Name</label>
-                               <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                            </div>
                           
                            <div>
                                <label for="email" class="block mb-1 font-medium">Email</label>
-                               <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                            </div>
                           
                            <div>
                                <label for="phone" class="block mb-1 font-medium">Phone Number</label>
-                               <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                            </div>
                           
                            <div>
                                <label for="interest" class="block mb-1 font-medium">Interested In</label>
-                               <select id="interest" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               <select id="interest" name="interest" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                                    <option value="">Select an option</option>
                                    <option value="membership">Gym Membership</option>
                                    <option value="personal-training">Personal Training</option>
@@ -336,85 +331,105 @@
                           
                            <div>
                                <label for="message" class="block mb-1 font-medium">Message</label>
-                               <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                               <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                            </div>
                           
                            <button type="submit" class="btn-primary w-full py-3 rounded-lg font-semibold">Submit Inquiry</button>
                        </form>
+                       <div id="form-feedback" class="mt-4 text-center"></div>
                    </div>
                </div>
            </div>
        </div>
    </section>
 
-
-   <!-- Footer -->
    <footer class="bg-gray-900 text-white py-12">
        <div class="container mx-auto px-4">
            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                <div>
                    <h3 class="text-xl font-bold mb-4 gold-text">Naubatpur Amarpura Gym</h3>
-                   <p class="mb-4">Your premier fitness destination in Amarpura, Naubatpur, Bihar. Committed to helping you achieve your health and fitness goals.</p>
+                   <p class="mb-4 text-gray-400">Your premier fitness destination in Amarpura, Naubatpur, Bihar. Committed to helping you achieve your health and fitness goals.</p>
                    <div class="flex space-x-4">
-                       <a href="#" class="text-2xl hover:text-gold-500 transition"><i class="fab fa-facebook"></i></a>
-                       <a href="#" class="text-2xl hover:text-gold-500 transition"><i class="fab fa-instagram"></i></a>
-                       <a href="#" class="text-2xl hover:text-gold-500 transition"><i class="fab fa-youtube"></i></a>
+                       <a href="#" aria-label="Facebook page" class="text-2xl hover:text-yellow-400 transition"><i class="fab fa-facebook"></i></a>
+                       <a href="#" aria-label="Instagram page" class="text-2xl hover:text-yellow-400 transition"><i class="fab fa-instagram"></i></a>
+                       <a href="#" aria-label="YouTube channel" class="text-2xl hover:text-yellow-400 transition"><i class="fab fa-youtube"></i></a>
                    </div>
                </div>
               
                <div>
                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
                    <ul class="space-y-2">
-                       <li><a href="#home" class="hover:text-gold-500 transition">Home</a></li>
-                       <li><a href="#facilities" class="hover:text-gold-500 transition">Facilities</a></li>
-                       <li><a href="#equipment" class="hover:text-gold-500 transition">Equipment</a></li>
-                       <li><a href="#trainer" class="hover:text-gold-500 transition">Trainer</a></li>
-                       <li><a href="#schedule" class="hover:text-gold-500 transition">Schedule</a></li>
-                       <li><a href="#contact" class="hover:text-gold-500 transition">Contact</a></li>
+                       <li><a href="#home" class="hover:text-yellow-400 transition text-gray-400">Home</a></li>
+                       <li><a href="#facilities" class="hover:text-yellow-400 transition text-gray-400">Facilities</a></li>
+                       <li><a href="#equipment" class="hover:text-yellow-400 transition text-gray-400">Equipment</a></li>
+                       <li><a href="#trainer" class="hover:text-yellow-400 transition text-gray-400">Trainer</a></li>
+                       <li><a href="#schedule" class="hover:text-yellow-400 transition text-gray-400">Schedule</a></li>
+                       <li><a href="#contact" class="hover:text-yellow-400 transition text-gray-400">Contact</a></li>
                    </ul>
                </div>
               
                <div>
                    <h3 class="text-xl font-bold mb-4">Contact Info</h3>
-                   <address class="not-italic">
+                   <address class="not-italic text-gray-400">
                        <p class="mb-2"><i class="fas fa-map-marker-alt gold-text mr-2"></i> FXG4+H58, Amarpura, Kopa Khurd, Bihar 801109, India</p>
-                       <p class="mb-2"><i class="fas fa-phone gold-text mr-2"></i> +91 98765 43210</p>
-                       <p class="mb-2"><i class="fas fa-envelope gold-text mr-2"></i> info@naubatpuramarpuragym.com</p>
+                       <p class="mb-2"><i class="fas fa-phone gold-text mr-2"></i> <a href="tel:+919876543210" class="hover:text-yellow-400 transition">+91 98765 43210</a></p>
+                       <p class="mb-2"><i class="fas fa-envelope gold-text mr-2"></i> <a href="mailto:info@naubatpuramarpuragym.com" class="hover:text-yellow-400 transition">info@naubatpuramarpuragym.com</a></p>
                        <p><i class="fas fa-clock gold-text mr-2"></i> Open: 4:00 AM - 9:00 AM, 4:00 PM - 9:00 PM</p>
                    </address>
                </div>
            </div>
           
-           <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-               <p>&copy; 2023 Naubatpur Amarpura Gym. All rights reserved.</p>
+           <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+               <p>&copy; <span id="current-year"></span> Naubatpur Amarpura Gym. All rights reserved.</p>
            </div>
        </div>
    </footer>
 
-
    <script>
-       // Equipment Data with unique images
+       // Mobile Menu Toggle
+       const mobileMenuButton = document.getElementById('mobile-menu-button');
+       const mobileMenu = document.getElementById('mobile-menu');
+       mobileMenuButton.addEventListener('click', () => {
+           mobileMenu.classList.toggle('hidden');
+       });
+
+       // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                mobileMenu.classList.add('hidden'); // Close mobile menu on link click
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+
+       // Equipment Data with updated Unsplash images
        const equipmentData = [
-           { name: "Treadmill", category: "cardio", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Elliptical Trainer", category: "cardio", image: "https://images.unsplash.com/photo-1571019613566-2e28a3e0cc7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Stationary Bike", category: "cardio", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Dumbbells (2-50kg)", category: "strength", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Barbells", category: "strength", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Weight Plates", category: "strength", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Bench Press", category: "strength", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Squat Rack", category: "strength", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Cable Machine", category: "strength", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Leg Press Machine", category: "strength", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Lat Pulldown Machine", category: "strength", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "TRX System", category: "functional", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Kettlebells", category: "functional", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Battle Ropes", category: "functional", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Plyometric Boxes", category: "functional", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
-           { name: "Resistance Bands", category: "functional", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" }
+           { name: "Treadmill", category: "cardio", image: "https://images.unsplash.com/photo-1580261450046-b560911450b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+           { name: "Elliptical Trainer", category: "cardio", image: "https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+           { name: "Stationary Bike", category: "cardio", image: "https://images.unsplash.com/photo-1611299080308-7046e117343b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+           { name: "Dumbbells (2-50kg)", category: "strength", image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+           { name: "Barbells", category: "strength", image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" },
+           { name: "Weight Plates", category: "strength", image: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" },
+           { name: "Bench Press", category: "strength", image: "https://images.unsplash.com/photo-1596357395217-e753eff04a09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" },
+           { name: "Squat Rack", category: "strength", image: "https://images.unsplash.com/photo-1574680178025-c8960a80ba89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" },
+           { name: "Cable Machine", category: "strength", image: "https://images.unsplash.com/photo-1521804906057-1df40db7536x?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" },
+           { name: "Leg Press Machine", category: "strength", image: "https://images.unsplash.com/photo-1577221084712-45b044c6762d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+           { name: "Lat Pulldown Machine", category: "strength", image: "https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" },
+           { name: "TRX System", category: "functional", image: "https://images.unsplash.com/photo-1590556409328-0c539679b931?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+           { name: "Kettlebells", category: "functional", image: "https://images.unsplash.com/photo-1584862800990-c9785dba4b88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+           { name: "Battle Ropes", category: "functional", image: "https://images.unsplash.com/photo-1581009146141-b5ab3c7e0e9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+           { name: "Plyometric Boxes", category: "functional", image: "https://images.unsplash.com/photo-1598289431512-b970a550c72f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+           { name: "Resistance Bands", category: "functional", image: "https://images.unsplash.com/photo-1607962837359-5e7e89f86776?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" }
        ];
 
-
-       // Schedule Data
+       // Schedule Data (remains the same, no images here)
        const scheduleData = {
            monday: [
                { time: "5:00 AM - 6:00 AM", class: "Morning Yoga", trainer: "Vikash Kumar", level: "All Levels" },
@@ -428,7 +443,7 @@
                { time: "4:30 PM - 5:30 PM", class: "Power Lifting", trainer: "Vikash Kumar", level: "Advanced" },
                { time: "6:00 PM - 7:00 PM", class: "Core Strength", trainer: "Vikash Kumar", level: "All Levels" }
            ],
-           wednesday: [
+            wednesday: [
                { time: "5:00 AM - 6:00 AM", class: "Morning Yoga", trainer: "Vikash Kumar", level: "All Levels" },
                { time: "6:00 AM - 7:00 AM", class: "Strength Training", trainer: "Vikash Kumar", level: "Intermediate" },
                { time: "4:30 PM - 5:30 PM", class: "HIIT", trainer: "Vikash Kumar", level: "Advanced" },
@@ -456,11 +471,10 @@
            ]
        };
 
-
        // Initialize Equipment
        function renderEquipment(filter = "all") {
            const equipmentGrid = document.getElementById('equipment-grid');
-           equipmentGrid.innerHTML = '';
+           equipmentGrid.innerHTML = ''; // Clear existing items
           
            const filteredEquipment = filter === "all"
                ? equipmentData
@@ -469,17 +483,18 @@
            filteredEquipment.forEach(item => {
                const equipmentItem = document.createElement('div');
                equipmentItem.className = 'card rounded-lg overflow-hidden';
+               // Added onerror for fallback images in equipment list
                equipmentItem.innerHTML = `
-                   <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover">
+                   <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover" 
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/757575?text=${encodeURIComponent(item.name)}';">
                    <div class="p-4">
-                       <h3 class="font-bold">${item.name}</h3>
+                       <h3 class="font-bold text-lg">${item.name}</h3>
                        <span class="text-xs px-2 py-1 rounded-full ${getCategoryClass(item.category)}">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
                    </div>
                `;
                equipmentGrid.appendChild(equipmentItem);
            });
        }
-
 
        function getCategoryClass(category) {
            switch(category) {
@@ -490,11 +505,10 @@
            }
        }
 
-
        // Initialize Schedule
        function renderSchedule(day = "monday") {
            const scheduleContent = document.getElementById('schedule-content');
-           scheduleContent.innerHTML = '';
+           scheduleContent.innerHTML = ''; // Clear existing items
           
            scheduleData[day].forEach(item => {
                const row = document.createElement('tr');
@@ -503,12 +517,11 @@
                    <td class="p-4">${item.time}</td>
                    <td class="p-4 font-medium">${item.class}</td>
                    <td class="p-4">${item.trainer}</td>
-                   <td class="p-4"><span class="px-2 py-1 rounded-full ${getLevelClass(item.level)}">${item.level}</span></td>
+                   <td class="p-4"><span class="px-2 py-1 rounded-full text-xs font-semibold ${getLevelClass(item.level)}">${item.level}</span></td>
                `;
                scheduleContent.appendChild(row);
            });
        }
-
 
        function getLevelClass(level) {
            switch(level.toLowerCase()) {
@@ -518,13 +531,15 @@
                default: return 'bg-gray-100 text-gray-800';
            }
        }
-
+       
+       // Update copyright year
+       document.getElementById('current-year').textContent = new Date().getFullYear();
 
        // Event Listeners
        document.addEventListener('DOMContentLoaded', function() {
            // Initialize equipment and schedule
            renderEquipment();
-           renderSchedule();
+           renderSchedule(); // Default to Monday
           
            // Equipment filter buttons
            document.querySelectorAll('.equipment-filter-btn').forEach(button => {
@@ -545,10 +560,32 @@
            });
           
            // Contact form submission
-           document.getElementById('contact-form').addEventListener('submit', function(e) {
+           const contactForm = document.getElementById('contact-form');
+           const formFeedback = document.getElementById('form-feedback');
+
+           contactForm.addEventListener('submit', function(e) {
                e.preventDefault();
-               alert('Thank you for your inquiry! We will contact you shortly.');
+               // Basic form validation feedback
+               const name = document.getElementById('name').value;
+               const email = document.getElementById('email').value;
+               const phone = document.getElementById('phone').value;
+
+               if (!name || !email || !phone) {
+                   formFeedback.textContent = 'Please fill in all required fields (Name, Email, Phone).';
+                   formFeedback.className = 'mt-4 text-center text-red-600';
+                   return;
+               }
+               
+               // Simulate form submission
+               formFeedback.textContent = 'Thank you for your inquiry! We will contact you shortly.';
+               formFeedback.className = 'mt-4 text-center text-green-600';
                this.reset();
+               
+               // Remove feedback message after a few seconds
+               setTimeout(() => {
+                   formFeedback.textContent = '';
+                   formFeedback.className = 'mt-4 text-center';
+               }, 5000);
            });
        });
    </script>
